@@ -10,7 +10,7 @@ module simple_alu #(
     input  wire [DATA_WIDTH-1:0] A,
     input  wire [DATA_WIDTH-1:0] B,
     input  wire [5:0] Op,
-    output reg [DATA_WIDTH-1:0] Result, 
+    output reg signed [DATA_WIDTH-1:0] Result, 
     output reg Overflow,
     output reg Zero
 );
@@ -67,11 +67,7 @@ always @(*) begin
 
         OP_SRL: Result = A >> 1; // Shift Right Logical (ingresa cero por la izquierda)
         
-        OP_SRA: begin
-            // Shift Right Arithmetic (mantiene el bit de signo)
-            // {A[DATA_WIDTH-1]} replica el MSB (bit de signo) y lo inserta a la izquierda, queda del mismo ancho
-            Result = {A[DATA_WIDTH-1], A[DATA_WIDTH-1:1]};
-        end
+        OP_SRA: Result = $signed(A) >>> 1; // Shift Right Arithmetic (preserva el signo)
 
         default: Result = {DATA_WIDTH{1'b0}}; // Op. no valida
     endcase
