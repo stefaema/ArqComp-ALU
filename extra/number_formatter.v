@@ -35,7 +35,7 @@ module number_formatter (
     wire [19:0] stage5_corrected, stage5_shifted;
     wire [19:0] stage6_corrected, stage6_shifted;
     wire [19:0] stage7_corrected, stage7_shifted;
-    wire [19:0] stage8_corrected;
+    wire [19:0] stage8_corrected, stage8_shifted;
 
     // Funcion para la correccion "Add-3". Se reutilizara en cada etapa.
     // Si el digito BCD es > 4, se le suma 3.
@@ -74,11 +74,11 @@ module number_formatter (
     
     // Etapa 8 (ultima correccion y desplazamiento)
     assign stage8_corrected = {correct_bcd(stage7_shifted[19:16]), correct_bcd(stage7_shifted[15:12]), correct_bcd(stage7_shifted[11:8]), stage7_shifted[7:0]};
-    // El ultimo desplazamiento no es necesario ya que solo nos interesan los bits BCD
+    assign stage8_shifted = stage8_corrected << 1;
 
     // Asignacion final del resultado BCD
-    assign bcd_hundreds = stage8_corrected[19:16];
-    assign bcd_tens     = stage8_corrected[15:12];
-    assign bcd_units    = stage8_corrected[11:8];
+    assign bcd_hundreds = stage8_shifted[19:16];
+    assign bcd_tens     = stage8_shifted[15:12];
+    assign bcd_units    = stage8_shifted[11:8];
 
 endmodule
