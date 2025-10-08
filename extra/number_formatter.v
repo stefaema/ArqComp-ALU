@@ -72,7 +72,7 @@ module number_formatter (
     assign stage7_corrected = {correct_bcd(stage6_shifted[19:16]), correct_bcd(stage6_shifted[15:12]), correct_bcd(stage6_shifted[11:8]), stage6_shifted[7:0]};
     assign stage7_shifted = stage7_corrected << 1;
     
-    // Etapa 8 (ultima correccion y desplazamiento)
+    // Etapa 8 
     assign stage8_corrected = {correct_bcd(stage7_shifted[19:16]), correct_bcd(stage7_shifted[15:12]), correct_bcd(stage7_shifted[11:8]), stage7_shifted[7:0]};
     assign stage8_shifted = stage8_corrected << 1;
 
