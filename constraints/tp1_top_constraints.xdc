@@ -49,13 +49,13 @@ set_property IOSTANDARD LVCMOS33 [get_ports {SW[15]}]
 set_property PACKAGE_PIN T18 [get_ports BTN_UP]
 set_property IOSTANDARD LVCMOS33 [get_ports BTN_UP]
 
-set_property PACKAGE_PIN U17 [get_ports BTN_LEFT]
+set_property PACKAGE_PIN W19 [get_ports BTN_LEFT]
 set_property IOSTANDARD LVCMOS33 [get_ports BTN_LEFT]
 
 set_property PACKAGE_PIN T17 [get_ports BTN_RIGHT]
 set_property IOSTANDARD LVCMOS33 [get_ports BTN_RIGHT]
 
-set_property PACKAGE_PIN W19 [get_ports BTN_DOWN]
+set_property PACKAGE_PIN U17 [get_ports BTN_DOWN]
 set_property IOSTANDARD LVCMOS33 [get_ports BTN_DOWN]
 
 # 4. Restricciones del Display de 7 Segmentos
